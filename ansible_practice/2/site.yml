@@ -1,0 +1,21 @@
+--- # practice 2
+- hosts: web
+  tasks: 
+    - name: register the variable 
+      command: cat /home/user/variable
+      register: variable
+      tags:
+        - test
+    - name: debug
+#      debug: msg="{{variable}}" 
+      debug: var={{variable.stdout}}
+      tags: 
+        - test 
+    - name: create a file too_high
+      sudo: yes
+      shell: echo "{{ variable.stdout}}">/tmp/too_high
+      when: variable.stdout|int > 5
+    - name: create a file just_right
+      sudo: yes
+      shell: echo "{{ variable.stdout }}">/tmp/just_right
+      when: variable.stdout|int == 5

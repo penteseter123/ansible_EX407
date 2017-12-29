@@ -1,0 +1,7 @@
+--- # test for split
+- hosts: all
+  vars:
+    ip: "192.168.14.21"
+  tasks:
+  - debug:
+      msg: "{{ ip.split('.') }}"

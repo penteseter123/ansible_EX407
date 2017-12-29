@@ -1,0 +1,16 @@
+--- #
+- hosts: spyton3.mylabserver.com
+  tasks:
+    - name: test ping
+      ping:
+    - name: add a host 
+      add_host: name=spyton4.mylabserver.com group=app
+    - name: ping
+      ping:
+    - debug: var=play_hosts
+- hosts: app
+  tasks:
+    - ping:
+    - meta: refresh_inventory
+    - name: test for meta
+      ping:

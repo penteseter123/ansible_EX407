@@ -1,0 +1,12 @@
+--- # facts playbook
+- hosts: all
+  vars:
+   ansible_sudo_pass: shiyang123
+  become: yes
+  tasks:
+   - name: set facts
+     set_fact: private_fact=bugs  other_fact=bunny
+   - name: facts
+     debug: msg="The private facts is {{ansible_default_ipv4.address}} and other facts is {{other_fact}}"
+   - name: fats
+     debug: msg="The server Operating System is {{ansible_os_family}} {{ansible_distribution_major_version}}"

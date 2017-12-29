@@ -1,0 +1,9 @@
+--- # test for tags
+- hosts: web
+  tasks:
+    - debug: msg="Always runs"
+      tags:
+        - always
+    - debug: msg="runs when you use tag1"
+      tags:
+        - tag1

@@ -1,0 +1,6 @@
+--- # test for group vars
+- hosts: web
+  tasks: 
+    - name: test for group vars
+      debug: var=ansible_test_group
+

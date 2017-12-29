@@ -1,0 +1,17 @@
+--- # practice for fail
+- hosts: web
+  tasks: 
+    - name: test for fail
+      command: /usr/bin/always_exist_one 
+      register: one
+      ignore_errors: yes
+      tags:
+        - test
+    - name: debug
+      debug: msg="{{ one }}"
+      tags: 
+        - test
+    - name: fail
+      fail:
+      when: one|failed
+

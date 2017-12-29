@@ -1,0 +1,11 @@
+[app]
+spyton2.mylabserver.com  ansible_host=172.31.97.101
+spyton3.mylabserver.com  ansible_po=2 ansible_ho=192.168.0.9 ansible_te="sucessful teist"
+
+[web]
+spyton[4:5].mylabserver.com
+
+
+[tous:children]
+web
+app

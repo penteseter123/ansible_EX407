@@ -1,0 +1,9 @@
+--- # test for with_nested 
+- hosts: web  
+  tasks: 
+    - name: test for with_nested
+      debug: msg="test is {{ item.0 }}  + {{ item.1 }}"
+      with_nested:
+          - ['A','B']
+          - ['C','D','E']
+

@@ -1,0 +1,10 @@
+--- # test for mail module
+- hosts: web
+  tasks: 
+    - name: test for mail module
+      mail: 
+        host='localhost'
+        port=25
+        to="user"
+        subject="test for mail"
+        body='system called {{ ansible_hostname }} has been successfully set up'

@@ -1,0 +1,7 @@
+--- # test for with_fileglob
+- hosts: web
+  tasks: 
+   - name: test for with fileglob
+     copy: src="{{ item }}" dest="/home/user/fileglob/" 
+     with_fileglob: 
+         - "block*"

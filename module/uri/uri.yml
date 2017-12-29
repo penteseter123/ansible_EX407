@@ -1,0 +1,8 @@
+--- # test for uri module
+- hosts: spyton6.mylabserver.com 
+  tasks: 
+   - name: test for uri module
+     uri: url=http://www.google.fr return_content=yes  
+     register: test
+   - debug: var=test
+

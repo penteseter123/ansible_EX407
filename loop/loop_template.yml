@@ -1,0 +1,5 @@
+--- # test for loop template 
+- hosts: test
+  tasks: 
+   - name: test for loop template
+     template: src=/home/user/ansible_linux_course/loop/loop_template.j2 dest=/home/user/test  mode=0644 owner=user

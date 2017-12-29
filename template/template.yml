@@ -1,0 +1,12 @@
+--- # template hostname
+- hosts: all
+  vars:
+    ansible_sudo_pass: shiyang123
+  become: yes
+  tasks:
+   - name: print hostname for tempalte
+     template:  
+      src=template.j2 
+      dest=/home/test2 
+      mode=0111 
+      backup=yes 

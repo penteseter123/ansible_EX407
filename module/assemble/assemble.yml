@@ -1,0 +1,5 @@
+--- # test for assemble module
+- hosts: web
+  tasks: 
+    - name: test for assemble module
+      assemble: src=/home/user/assemble  dest=/home/user/assemble.conf  delimiter='#test for assemble'

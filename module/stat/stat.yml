@@ -1,0 +1,51 @@
+--- # test for stat module
+- hosts: web
+  vars: 
+    ansilbe_sudo_pass: shiyang123
+  tasks: 
+    - name: test for stat module
+      stat:
+        path: /home/user/Desktop
+      register: p
+      tags: 
+        - directory
+    - debug:
+        msg: "Path exists and is a directory"
+      when: p.stat.isdir is defined and p.stat.isdir
+      tags:
+        - directory
+    - name: test for system stat
+      sudo: yes 
+      command: systemctl status httpd
+      register: http
+      ignore_errors: yes
+      tags: 
+        - http
+    - name: debug for stat
+      debug: 
+        msg: "The service is activted"
+      when: http.stdout.find('active (running)') != -1
+      tags:
+        - http
+    - name: test for file
+      stat: path=/home/user/stat
+      register: file
+      tags: 
+        - file
+    - name: debug for test file 
+      debug: 
+        msg: " The file exists"
+      when: file.stat.exists and file.stat.isreg
+      tags: 
+        - file
+    - name: test for link
+      stat: path=/home/user/stat
+      register: link
+      tags: 
+        - link
+    - name: debug for link
+      debug: 
+        msg: " The link exists" 
+      when: link.stat.exists and link.stat.islnk
+      tags: 
+        - link

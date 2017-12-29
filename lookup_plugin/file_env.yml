@@ -1,0 +1,11 @@
+--- # test for lookup plugin
+- hosts: web
+  tasks: 
+   - name: plugin for file
+     debug: msg="content of file is {{ lookup('file','/home/user/.ssh/id_rsa.pub') }}"
+   - name: plugin for env
+     debug: msg="hostname is {{ lookup('env','HOSTNAME','USER','HOME','SHELL') }}"
+   - name: plugin for csv
+     debug: msg="The atomic number of li is {{ lookup('csvfile','He file=test.csv delimiter=, col=2') }}"
+   - name: plugin for ini
+     debug: msg="The production user is {{ lookup('ini','pass section=production file=test.ini') }}"

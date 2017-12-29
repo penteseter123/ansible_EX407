@@ -1,0 +1,11 @@
+---
+# tasks file for apache
+- name: instll apache
+  yum: name={{ item }} state=latest
+  with_items:
+     - httpd
+     - php
+     - php-pear
+     - php-gd
+     - elinks
+  notify: apache

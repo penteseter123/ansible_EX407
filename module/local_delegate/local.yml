@@ -1,0 +1,10 @@
+--- # facts playbook
+- hosts: all
+  become: yes
+  vars:
+   ansible_sudo_pass: shiyang123
+   local_home: "{{lookup('env','PWD')}}"
+   local_test: "{{ansible_env.USER}}"
+  tasks:
+   - name: find modules 
+     copy: src=/home/user/directory dest=/home/user/Desktop/ directory_mode=yes

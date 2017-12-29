@@ -1,0 +1,14 @@
+--- # test for role
+- hosts: web
+  become: yes
+  vars: 
+    ansible_sudo_pass: shiyang123
+  pre_tasks: 
+     - name: test for include vars
+       include_vars: 
+           file: "var.yml"
+           name: test
+  roles:
+    - { role: geerlingguy.apache, when: test.test_vars=="successful", tags: ["test","test2"] }
+  post_tasks: 
+     - debug: var=test

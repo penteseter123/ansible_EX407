@@ -1,0 +1,12 @@
+--- # test for parallisme
+- hosts: all
+  sudo: yes
+  tasks:
+    - name: Install mlocate
+      yum: name=mlocate state=absent
+      async: 1
+#      poll: 0
+    - name: Run updatedb
+      command: /usr/bin/updatedb
+      async: 2
+      poll: 0

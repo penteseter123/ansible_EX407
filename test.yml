@@ -1,0 +1,48 @@
+--- # ansible playbook
+- hosts: all
+  become: yes
+  vars:
+   ansible_sudo_pass: "shiyang123"
+  tasks:
+   - name: install packages
+     user: name=test uid=501 shell=/bin/bash createhome=yes
+   - name: check the user
+     shell: compgen -u
+     register: user_list
+   - name: debug process
+     debug: msg="test user is created"
+     when: "'test' in user_list.stdout_lines"
+     ignore_errors: yes
+   - name: create a file in /opt folder (localhost)
+     file: name=/opt/program1.sh state=touch
+     delegate_to: 127.0.0.1
+   - name: copy the file to hosts
+     copy: src=/opt/program1.sh  dest=/home/user mode=0755
+#   - name: remove the user
+#     user: name=test state=absent
+   - name: check the file exiist
+     stat: path=/home/test  
+     register: st
+   - debug: var=st.stat
+   - name: create a file
+     file: name=/home/test/file.txt  state=touch
+     tags: test
+   - name: create a file
+     command: echo "test" > /home/test/file.txt
+     tags: testi
+   - name: lineinfile
+     lineinfile: path=/home/test/file.txt regexp='^test' line='successful'
+     tags: test
+   - name: check the file.txt
+     command: cat "/home/test/file.txt"
+     register: file
+     tags: test
+   - debug: var=file.stdout.find('uccessful')
+     tags: test
+   - debug: msg="test is successful"
+     when: file.stdout.find('uccessful')==1
+     tags: test
+
+ 
+  
+  

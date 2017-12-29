@@ -1,0 +1,7 @@
+--- # test for join
+- hosts: all
+  vars:
+    test: ['192','168','14','21']
+  tasks:
+  - debug:
+      msg: "{{ test | join('.') }}"

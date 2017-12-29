@@ -1,0 +1,11 @@
+--- #test for hostvars
+- hosts: web
+#  gather_facts: no
+  tasks: 
+    - name: hostvars for ip address
+      debug: msg="{{ hostvars[ groups['web'][0] ].ansible_default_ipv4.address}}"
+    - name: hostvars 
+      debug: >
+        msg="{{ hostvars[item].ansible_default_ipv4.address}}"
+      with_items: "{{ groups.web }}"
+   #   debug: var=headnode

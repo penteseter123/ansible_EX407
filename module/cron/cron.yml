@@ -1,0 +1,8 @@
+--- # test for cron module
+- hosts: web
+  become: yes
+  vars: 
+    ansible_sudo_pass: shiyang123
+  tasks: 
+   - name: test for cron module
+     cron: name="test for cron" user=user minute=30 hour=07 job="ls /home/ansible" state=absent

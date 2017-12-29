@@ -1,0 +1,10 @@
+--- # facts playbook
+- hosts: web
+  vars:
+   ansible_sudo_pass: shiyang123
+  become: yes
+  tasks:
+   - name: find modules 
+     find: path=/etc patterns="*tab*"
+     register: res
+   - debug: var=res 

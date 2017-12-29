@@ -1,0 +1,14 @@
+--- # test for lineinfile moduel
+- hosts: web
+  tasks:
+   - name: test for lineinfile 
+     lineinfile: dest=/home/user/test  regexp='(^test)' line='#\g<1>911' backrefs=yes
+   - name: test for lineinfile (insert after)
+     lineinfile: dest=/home/user/test  line='test for insert regexp' insertafter='#tes*'
+     tags: 
+        - insertafter
+   - name: test for lineinfile (insert before)
+     lineinfile: dest=/home/user/test  line='test for insert before' insertbefore=BOF
+     tags: 
+        - insertbefore
+

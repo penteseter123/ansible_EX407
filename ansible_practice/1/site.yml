@@ -1,0 +1,10 @@
+--- # practice for ntp 
+- hosts: web
+  become: yes
+  vars_prompt:
+    - name: ntp_timezone
+      prompt: "time_zone:"
+  vars: 
+    ansible_sudo_pass: shiyang123
+  roles: 
+    - geerlingguy.ntp

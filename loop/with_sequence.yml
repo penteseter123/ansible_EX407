@@ -1,0 +1,5 @@
+--- # test for with_sequence
+- hosts: web
+  tasks: 
+    - debug:  msg="{{ item }}"
+      with_sequence: start=2 end=10 stride=2

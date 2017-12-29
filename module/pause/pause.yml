@@ -1,0 +1,9 @@
+--- # test for pause module
+- hosts: web
+  tasks: 
+    - name: test for pause module
+      pause: prompt="package to be installed"
+      register: package
+    - debug: var=package
+    - debug: msg="The package is {{ package.user_input }}"
+    - debug: msg="time to pause {{ package.stdout }}"

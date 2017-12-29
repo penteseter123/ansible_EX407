@@ -1,0 +1,5 @@
+--- # test for setup module 
+- hosts: web
+  tasks: 
+    - name: test for setup module
+      setup: fact_path='/home/user/facts'

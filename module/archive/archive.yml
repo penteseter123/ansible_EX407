@@ -1,0 +1,19 @@
+--- # test for archive module
+- hosts: web
+  sudo: yes
+  vars:
+    ansible_sudo_pass: shiyang123
+  gather_facts: no
+  tasks: 
+    - name: test for archive module
+      archive: 
+           path:
+             - /home/user/test.yml
+             - /home/user/test2.yml 
+           dest: /home/user/tata.tgz
+      tags:
+         - archive
+    - name: test for unarchive module
+      unarchive: src=/home/user/tutu.tgz dest=/home/user/Desktop remote_src=yes
+      tags:
+         - unarchive

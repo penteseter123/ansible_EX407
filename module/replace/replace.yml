@@ -1,0 +1,5 @@
+--- # test for replace module
+- hosts: web
+  tasks:
+    - name: test for replace module
+      replace: path=/home/user/test.yml regexp="(^test*)" replace="#\1" 

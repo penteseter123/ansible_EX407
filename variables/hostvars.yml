@@ -1,0 +1,6 @@
+--- # test for group vars
+- hosts: web
+  tasks: 
+    - name: test for group vars
+      debug: var=hostvars['spyton4.mylabserver.com'].ansible_hostname_short
+

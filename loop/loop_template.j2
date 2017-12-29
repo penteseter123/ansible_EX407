@@ -1,0 +1,3 @@
+{% for server in groups.test %}
+{{ server }} {{ hostvars[server].ansible_default_ipv4.address }} - free memory: {{ hostvars[server].ansible_memory_mb.real.free}}
+{% endfor %}

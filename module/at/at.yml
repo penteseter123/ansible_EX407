@@ -1,0 +1,7 @@
+--- # test for AT module
+- hosts: web
+  sudo: yes
+  vars: 
+    ansible_sudo_pass: shiyang123
+  tasks: 
+    - at: command="ls -al /var > /home/user/at.log" count=1 units="minutes" 

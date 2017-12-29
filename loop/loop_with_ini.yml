@@ -1,0 +1,7 @@
+--- # test for loop with_ini
+- hosts: web
+  gather_facts: no
+  tasks:
+   - debug: msg="{{ item }}"
+     with_ini: value[1-2] section=tutu file=/home/user/ansible_linux_course/loop/ansible.ini re=true
+

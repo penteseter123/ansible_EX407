@@ -1,0 +1,10 @@
+
+---
+- hosts: web
+  tasks:
+# emit a debug message containing the content of each file.
+    - debug:
+       msg: "{{ item }}"
+      with_file:
+          - blockline
+          - blockline2

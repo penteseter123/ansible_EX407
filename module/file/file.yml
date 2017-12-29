@@ -1,0 +1,7 @@
+--- # test for file
+- hosts: web
+  tasks: 
+    - name: test for file modul
+      file:  name=test_direc state=absent  owner=user 
+#state=link src=/home/user/test  dest=/home/user/test2
+#mode=u+rwx,g+rw,o+r 

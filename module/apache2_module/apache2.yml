@@ -1,0 +1,9 @@
+--- # test for apache2 module
+-  hosts: web
+   become: yes
+   vars: 
+     ansible_sudo_pass: shiyang123
+   gather_facts: no
+   tasks: 
+    - name: test for apache2 module
+      apache2_module: name=autoindex state=present 
